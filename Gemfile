@@ -42,6 +42,10 @@ gem "sentry-rails"
 gem 'slim_lint'
 gem 'rubocop-rails'
 
+gem 'minitest-power_assert'
+
+gem 'devise'
+
 
 group :development, :test do
   gem "sqlite3", ">= 1.4"

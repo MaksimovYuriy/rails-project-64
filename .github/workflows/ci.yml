@@ -61,7 +61,7 @@ jobs:
 
       - name: Run tests
         env:
-          RAILS_ENV: test
+          RAILS_ENV: test 
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
 
@@ -72,6 +72,9 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
+
+      - name: Permissions
+        run: chmod +x bin/rubocop; chmod +x bin/brakeman; chmod +x bin/rails
       
       - name: Install
         run: make setup
