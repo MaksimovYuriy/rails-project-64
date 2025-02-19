@@ -39,6 +39,9 @@ gem "stackprof"
 gem "sentry-ruby"
 gem "sentry-rails"
 
+gem 'slim_lint'
+gem 'rubocop-rails'
+
 
 group :development, :test do
   gem "sqlite3", ">= 1.4"

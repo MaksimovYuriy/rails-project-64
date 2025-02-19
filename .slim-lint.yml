@@ -1,0 +1,12 @@
+linters:
+  LineLength:
+    max_length: 100
+  AccessibleAlt:
+    enabled: true
+  NoEmptyElements:
+    enabled: false
+
+include_linters:
+  - Linter::LineLength
+  - Linter::AccessibleAlt
+  - Linter::NoEmptyElements
