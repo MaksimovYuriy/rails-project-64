@@ -16,4 +16,7 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
     = Sentry.get_trace_propagation_meta.html_safe
   body
+
+    = render 'layouts/shared/nav'
+
     = yield
