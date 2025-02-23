@@ -1,2 +1,15 @@
 = content_for :title do
   = 'Posts'
+
+- @posts.each do |post|
+  div.card
+    div.card-dody
+      h5.card-title
+        = post.title
+      h6.card-subtitle
+        = post.category.name
+      p.card-text
+        = post.body
+      h6.card-subtitle
+        = post.user.email
+  hr
