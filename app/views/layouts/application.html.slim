@@ -17,7 +17,7 @@ html
     = Sentry.get_trace_propagation_meta.html_safe
   body
     navbar
-      = render 'layouts/shared/nav'
+      = render partial: 'layouts/shared/nav'
 
     main.container.p-2
       = yield
