@@ -6,6 +6,11 @@
 #
 
 # column: value
+one:
+  email: test1@mail.ru
+
+two:
+  email: test2@mail.ru
 #
 
 # column: value
