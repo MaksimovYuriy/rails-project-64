@@ -1,0 +1,25 @@
+h1
+    = @post.title
+h6
+    = @post.category.name
+hr
+p
+    = @post.body
+hr
+strong
+    | Author: 
+    = @post.user.email
+hr
+h3
+    | Comments
+
+div
+    == render 'posts/comment', post_comment: @post_comment, url: post_post_comments_path(@post)
+
+- @post.post_comments.each do |comment|
+    hr
+    div
+        p
+            = comment.body
+        strong
+            = comment.user.email

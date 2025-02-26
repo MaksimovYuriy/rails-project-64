@@ -5,7 +5,7 @@
   div.card
     div.card-dody
       h5.card-title
-        = post.title
+        = link_to post.title, post_path(post)
       h6.card-subtitle
         = post.category.name
       p.card-text

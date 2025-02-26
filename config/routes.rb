@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-  resources :posts
+  resources :posts do
+    resources :post_comments, shallow: true, controller: 'comments'
+  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
