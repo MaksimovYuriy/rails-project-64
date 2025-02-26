@@ -47,6 +47,8 @@ gem 'minitest-power_assert'
 gem 'devise'
 gem 'simple_form'
 
+gem 'ancestry'
+
 
 group :development, :test do
   gem "sqlite3", ">= 1.4"
