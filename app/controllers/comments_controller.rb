@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_post, only: %i[ index new create ]
 
   def create
-    debugger
     if @is_authorized
 
       @post_comment = @post.post_comments.build(post_comment_params)
