@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: %i[ index new create ]
+  before_action :authenticate_user!
+  before_action :set_post, only: %i[ create ]
 
   def create
-    if @is_authorized
+    @post_comment = @post.post_comments.build(post_comment_params)
+    @post_comment.user = current_user
 
-      @post_comment = @post.post_comments.build(post_comment_params)
-      @post_comment.user = current_user
-      @post_comment.save
-    
+    if @post_comment.save
+      redirect_to post_path(@post) 
     else
       redirect_to new_user_session_path
     end
