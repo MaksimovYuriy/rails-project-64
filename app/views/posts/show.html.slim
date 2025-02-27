@@ -14,12 +14,8 @@ h3
     | Comments
 
 div
-    == render 'posts/comment', post_comment: @post_comment, url: post_post_comments_path(@post)
+    == render 'posts/new_comment', post_comment: @post_comment, url: post_post_comments_path(@post)
+hr
 
-- @post.post_comments.each do |comment|
-    hr
-    div
-        p
-            = comment.body
-        strong
-            = comment.user.email
+== render 'posts/comment', post_comments: @post.post_comments, depth: 0
+            
