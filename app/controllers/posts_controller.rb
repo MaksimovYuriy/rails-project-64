@@ -6,11 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    if @is_authorized
-      @post = Post.new
-    else
-      redirect_to new_user_session_path
-    end
+    @post = Post.new
   end
 
   def create
