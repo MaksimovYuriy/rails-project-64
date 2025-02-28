@@ -1,3 +1,4 @@
 = simple_form_for(post_comment, url: url) do |f|
+    = f.hidden_field :parent_id, value: post_comment.parent_id
     = f.input :body
     = f.button :submit
