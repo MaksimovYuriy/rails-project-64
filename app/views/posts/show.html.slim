@@ -17,5 +17,5 @@ div
     == render 'posts/new_comment', post_comment: @post_comment, url: post_post_comments_path(@post)
 hr
 
-== render 'posts/comment', post_comments: @post.post_comments.where(ancestry: nil), depth: 0
+== render 'posts/comment', post_comments: @post.post_comments.where(ancestry: '/'), depth: 0
             
