@@ -6,7 +6,12 @@
             = comment.body
         strong
             = comment.user.email
-        p
+        button.btn.btn-primary(
+            type='button' 
+            data-bs-toggle='collapse' 
+            data-bs-target="#reply_form_#{comment.id}")
+            | Reply
+        .collapse id="reply_form_#{comment.id}"
             - reply_comment = PostComment.new
             - reply_comment.parent_id = comment.id
             == render 'posts/new_comment', post_comment: reply_comment, url: post_post_comments_path(@post)
