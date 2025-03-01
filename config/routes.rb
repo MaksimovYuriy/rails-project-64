@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts do
     resources :post_comments, shallow: true, controller: 'comments'
+    resources :post_likes, controller: 'likes', only: [:create, :destroy]
   end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

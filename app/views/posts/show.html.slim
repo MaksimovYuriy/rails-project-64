@@ -10,6 +10,15 @@ strong
     | Author: 
     = @post.user.email
 hr
+container.d-flex.align-items-center
+    strong
+        - @post_like = PostLike.find_like(current_user, @post)
+        - if @post_like
+            = button_to 'Delete like', post_post_like_path(@post, @post_like), method: :delete
+        - else
+            = button_to 'Like', post_post_likes_path(@post), method: :post
+    strong.ms-2
+        = PostLike.where(post: @post).count
 h3
     | Comments
 
