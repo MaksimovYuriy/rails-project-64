@@ -23,10 +23,10 @@ container.d-flex.align-items-center.mt-5
     strong
         - @post_like = PostLike.find_like(current_user, @post)
         - if @post_like
-            = button_to (image_tag asset_path('like_1'), width: 25), post_post_like_path(@post, @post_like), 
+            = button_to (image_tag asset_path('like_1.png'), width: 25), post_post_like_path(@post, @post_like), 
             method: :delete, class: 'btn btn-link'
         - else
-            = button_to (image_tag asset_path('like_0'), width: 25), post_post_likes_path(@post), 
+            = button_to (image_tag asset_path('like_0.png'), width: 25), post_post_likes_path(@post), 
             method: :post, class: 'btn btn-link'
 h3.mt-5
     | Comments
