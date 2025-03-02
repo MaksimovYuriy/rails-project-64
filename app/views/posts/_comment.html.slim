@@ -1,21 +1,24 @@
-- depth += 20
+- depth += 15
 
 - post_comments.each do |comment|
-    div
-        p
-            = comment.body
-        strong
-            = comment.user.email
-        button.btn.btn-primary(
-            type='button' 
-            data-bs-toggle='collapse' 
-            data-bs-target="#reply_form_#{comment.id}")
-            | Reply
-        .collapse id="reply_form_#{comment.id}"
-            - reply_comment = PostComment.new
-            - reply_comment.parent_id = comment.id
-            == render 'posts/new_comment', post_comment: reply_comment, url: post_post_comments_path(@post)
-        - if comment.children.any?
-            div style="margin-left: #{depth}px;"
-                == render 'posts/comment', post_comments: comment.children, depth: depth
-    hr
+    container.p-1
+        div.card
+            div.card-body
+                div.card-subtitle
+                    strong
+                        = comment.user.email + " #{time_ago_in_words(comment.created_at)}"
+                div.card-text
+                    = comment.body
+                div.card-text
+                    button.btn.btn-primary(
+                        type='button' 
+                        data-bs-toggle='collapse' 
+                        data-bs-target="#reply_form_#{comment.id}")
+                        | Reply
+                    .collapse.mt-2 id="reply_form_#{comment.id}"
+                        - reply_comment = PostComment.new
+                        - reply_comment.parent_id = comment.id
+                        == render 'posts/new_comment', post_comment: reply_comment, url: post_post_comments_path(@post)
+            - if comment.children.any?
+                div style="margin-left: #{depth}px;"
+                    == render 'posts/comment', post_comments: comment.children.order(created_at: :desc), depth: depth

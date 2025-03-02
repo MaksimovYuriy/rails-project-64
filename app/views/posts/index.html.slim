@@ -2,14 +2,17 @@
   = 'Posts'
 
 - @posts.each do |post|
-  div.card
-    div.card-dody
-      h5.card-title
-        = link_to post.title, post_path(post)
-      h6.card-subtitle
-        = post.category.name
-      p.card-text
-        = post.body
-      h6.card-subtitle
-        = post.user.email
-  hr
+  container.p-1
+    div.card
+      div.card-body.m-1
+        h4.card-title.m-2
+          = link_to post.title, post_path(post), class: 'nav-link link-dark'
+        p.card-text.m-2
+          = post.body
+        container.d-flex.align-items-center
+          h6.card-subtitle.m-2
+            = "Author: #{post.user.email}"
+          h6.card-subtitle.m-2.ms-2
+            = "Likes: #{PostLike.where(post: post).count}"
+          h6.card-subtitle.m-2.ms-3
+            = "Date: #{time_ago_in_words(post.created_at)}"

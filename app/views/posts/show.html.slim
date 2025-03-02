@@ -1,30 +1,36 @@
-h1
-    = @post.title
-h6
-    = @post.category.name
-hr
-p
-    = @post.body
-hr
-strong
-    | Author: 
-    = @post.user.email
-hr
 container.d-flex.align-items-center
+    p
+        = link_to 'All Posts', posts_path
+    p
+        = ' / '
+    p
+        = @post.category.name
+container.mt-5
+    h1
+        = @post.title
+
+container.text-break
+    = @post.body
+
+container.d-flex.align-items-center.mt-5
+    strong
+        | Author: 
+        = @post.user.email
+    strong.ms-3
+        = "#{time_ago_in_words(@post.created_at)}"
+    strong.ms-5
+        = PostLike.where(post: @post).count
     strong
         - @post_like = PostLike.find_like(current_user, @post)
         - if @post_like
             = button_to 'Delete like', post_post_like_path(@post, @post_like), method: :delete
         - else
             = button_to 'Like', post_post_likes_path(@post), method: :post
-    strong.ms-2
-        = PostLike.where(post: @post).count
-h3
+h3.mt-5
     | Comments
 
 div
     == render 'posts/new_comment', post_comment: @post_comment, url: post_post_comments_path(@post)
-hr
 
-== render 'posts/comment', post_comments: @post.post_comments.where(ancestry: '/'), depth: 0
+== render 'posts/comment', post_comments: @post.post_comments.where(ancestry: '/').order(created_at: :desc), depth: 0
             
