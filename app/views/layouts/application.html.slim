@@ -16,11 +16,12 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
     = Sentry.get_trace_propagation_meta.html_safe
   body
-    navbar
-      = render partial: 'layouts/shared/nav'
+    div.d-flex.flex-column.justify-content-between.min-vh-100
+      div
+        = render partial: 'layouts/shared/nav'
 
-    main.container.p-2
-      = yield
+      div.container.
+        = yield
 
-    footer
-      = render 'layouts/shared/footer'
+      div
+        = render 'layouts/shared/footer'
