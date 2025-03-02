@@ -1,15 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  body: MyText
-  post: one
+  body: first test comment
   user: one
-  ancestry: MyString
-  string: MyString
-
-two:
-  body: MyText
   post: two
+  ancestry: /
+
+nested_one:
+  body: second test comment
   user: two
-  ancestry: MyString
-  string: MyString
+  post: one
+  ancestry: /<%= ActiveRecord::FixtureSet.identify(:one) %>/

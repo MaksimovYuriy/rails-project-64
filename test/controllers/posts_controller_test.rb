@@ -34,7 +34,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post posts_url, params: { post: @post_attrs }
     post = Post.find_by @post_attrs
     assert { post }
-    assert_redirected_to root_url
+    assert_redirected_to post_url(post)
   end
 
 end

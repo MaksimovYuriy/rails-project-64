@@ -1,2 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  title: 'test_title_1'
+  body: 'test_body_1'
+  category: one
+  user: one
+
+two:
+  title: 'test_title_2'
+  body: 'test_body_2'
+  category: two
+  user: two
+
+

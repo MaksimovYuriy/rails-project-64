@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :posts do
-    resources :post_comments, shallow: true, controller: 'comments'
+    resources :post_comments, shallow: true, controller: 'comments', only: [:create]
     resources :post_likes, controller: 'likes', only: [:create, :destroy]
   end
   
