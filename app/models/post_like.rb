@@ -4,10 +4,6 @@ class PostLike < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  def self.find_like(user, post)
-    PostLike.find_by(user: user, post: post)
-  end
-
   private
 
   def check_like_exist
