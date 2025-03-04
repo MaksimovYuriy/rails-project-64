@@ -14,19 +14,19 @@ container.text-break
 
 container.d-flex.align-items-center.mt-5
     strong
-        | Author: 
+        | Author:
         = @post.user.email
     strong.ms-3
-        = "#{time_ago_in_words(@post.created_at)}"
+        = time_ago_in_words(@post.created_at).to_s
     strong.ms-5
         = PostLike.where(post: @post).count
     strong
         - @post_like = PostLike.find_by(user: current_user, post: @post)
         - if @post_like
-            = button_to (image_tag asset_path('like_1.png'), width: 25), post_post_like_path(@post, @post_like), 
+            = button_to (image_tag asset_path('like_1.png'), width: 25), post_post_like_path(@post, @post_like),
             method: :delete, class: 'btn btn-link'
         - else
-            = button_to (image_tag asset_path('like_0.png'), width: 25), post_post_likes_path(@post), 
+            = button_to (image_tag asset_path('like_0.png'), width: 25), post_post_likes_path(@post),
             method: :post, class: 'btn btn-link'
 h3.mt-5
     | Comments
@@ -35,4 +35,3 @@ div
     == render 'posts/new_comment', post_comment: @post_comment, url: post_post_comments_path(@post)
 
 == render 'posts/comment', post_comments: @post.post_comments.where(ancestry: '/').order(created_at: :desc), depth: 0
-            

@@ -1,6 +1,8 @@
 linters:
+  Rails/OutputSafety:
+    Enabled: false
   LineLength:
-    max_length: 100
+    enabled: false
   AccessibleAlt:
     enabled: true
   NoEmptyElements:

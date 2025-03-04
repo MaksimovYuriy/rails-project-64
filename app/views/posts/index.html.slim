@@ -3,8 +3,8 @@
 
 - @posts.each do |post|
   container.p-1
-    div.card
-      div.card-body.m-1
+    .card
+      .card-body.m-1
         h4.card-title.m-2
           = link_to post.title, post_path(post), class: 'nav-link link-dark'
         p.card-text.m-2

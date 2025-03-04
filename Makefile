@@ -9,5 +9,5 @@ setup:
 lint:
 	rake lint:all
 
-test:
+tests:
 	rake test

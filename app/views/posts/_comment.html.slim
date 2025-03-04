@@ -2,17 +2,17 @@
 
 - post_comments.each do |comment|
     container.p-1
-        div.card
-            div.card-body
-                div.card-subtitle
+        .card
+            .card-body
+                .card-subtitle
                     strong
                         = comment.user.email + " #{time_ago_in_words(comment.created_at)}"
-                div.card-text
+                .card-text
                     = comment.body
-                div.card-text
+                .card-text
                     button.btn.btn-primary(
-                        type='button' 
-                        data-bs-toggle='collapse' 
+                        type='button'
+                        data-bs-toggle='collapse'
                         data-bs-target="#reply_form_#{comment.id}")
                         | Reply
                     .collapse.mt-2 id="reply_form_#{comment.id}"
