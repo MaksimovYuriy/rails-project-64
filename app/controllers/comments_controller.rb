@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: %i[ create ]
+  before_action :set_post, only: %i[create]
 
   def create
     @post_comment = @post.post_comments.build(post_comment_params)
@@ -8,7 +10,7 @@ class CommentsController < ApplicationController
 
     if @post_comment.save
 
-      redirect_to post_path(@post) 
+      redirect_to post_path(@post)
     else
       redirect_to new_user_session_path
     end
@@ -23,5 +25,4 @@ class CommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:body, :parent_id)
   end
-
 end

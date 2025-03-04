@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      = content_for(:title) || "Collective Blog"
+      = content_for(:title) || 'Collective Blog'
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     meta[name="apple-mobile-web-app-capable" content="yes"]
     = csrf_meta_tags
@@ -12,8 +12,8 @@ html
     link[rel="icon" href="/icon.png" type="image/png"]
     link[rel="icon" href="/icon.svg" type="image/svg+xml"]
     link[rel="apple-touch-icon" href="/icon.png"]
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', "data-turbo-track": 'reload', type: 'module'
     = Sentry.get_trace_propagation_meta.html_safe
   body
       div

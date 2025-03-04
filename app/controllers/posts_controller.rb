@@ -1,8 +1,15 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[ new create ]
+  before_action :authenticate_user!, only: %i[new create]
 
   def index
     @posts = Post.order(created_at: :desc)
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def new
@@ -19,15 +26,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-    @post_comment = PostComment.new
-  end
-
-  private 
+  private
 
   def post_params
     params.require(:post).permit(:title, :body, :category_id)
   end
-
 end

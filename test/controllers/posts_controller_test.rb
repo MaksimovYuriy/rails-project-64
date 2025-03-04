@@ -1,9 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-
   setup do
-
     @post_attrs = {
       title: 'test_title',
       body: 'test_body',
@@ -25,7 +25,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
-  test 'new post with user' do 
+  test 'new post with user' do
     post user_session_url, params: { user: {
       email: @user.email,
       password: @user.password
@@ -36,5 +36,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert { post }
     assert_redirected_to post_url(post)
   end
-
 end

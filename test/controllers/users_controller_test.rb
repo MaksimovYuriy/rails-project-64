@@ -1,7 +1,8 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-
   setup do
     @attrs = {
       email: 'test_email@mail.ru',
@@ -19,7 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get new_user_session_url
     assert_response :success
 
-    user = User.create(@attrs)
+    user = User.create!(@attrs)
 
     post user_session_url, params: { user: {
       email: user.email,
@@ -42,7 +43,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#sign_out' do
-    user = User.create(@attrs)
+    user = User.create!(@attrs)
 
     post user_session_url, params: { user: {
       email: user.email,
@@ -53,5 +54,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to new_user_session_path
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
@@ -13,11 +15,11 @@ class LikesController < ApplicationController
 
   def destroy
     @post_like = PostLike.find(params[:id])
-    if !@post_like.nil?
-      @post_like.destroy
-      redirect_to post_path(@post)
-    else
+    if @post_like.nil?
       redirect_to root_path
+    else
+      @post_like.destroy!
+      redirect_to post_path(@post)
     end
   end
 

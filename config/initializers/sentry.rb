@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Sentry.init do |config|
   config.dsn = 'https://286233153793b669f386f12a85b20813@o4508844991053824.ingest.de.sentry.io/4508845006258256'
-  config.breadcrumbs_logger = [:active_support_logger, :http_logger]
+  config.breadcrumbs_logger = %i[active_support_logger http_logger]
 
   # Add data like request headers and IP for users,
   # see https://docs.sentry.io/platforms/ruby/data-management/data-collected/ for more info
@@ -11,7 +13,7 @@ Sentry.init do |config|
   # We recommend adjusting this value in production.
   config.traces_sample_rate = 1.0
   # or
-  config.traces_sampler = lambda do |context|
+  config.traces_sampler = lambda do |_context|
     true
   end
   # Set profiles_sample_rate to profile 100%

@@ -1,9 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
-
   setup do
-
     user_attrs = {
       email: 'test_email@mail.ru',
       password: 'testtest',
@@ -11,9 +11,8 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     }
 
     @user = User.create(user_attrs)
-
   end
-  
+
   test 'like without user' do
     post post_post_likes_path(posts(:one))
     assert_redirected_to new_user_session_url
@@ -51,5 +50,4 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     post_like = PostLike.find_by user: @user, post: posts(:one)
     assert { post_like.nil? }
   end
-
 end

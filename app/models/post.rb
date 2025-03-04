@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
@@ -5,7 +7,6 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
 
-  validates :category_id, presence: true
   validates :title, presence: true
   validates :title, length: { minimum: 5, maximum: 200 }
   validates :body, presence: true
