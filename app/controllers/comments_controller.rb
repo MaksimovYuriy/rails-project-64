@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :set_post, only: %i[create]
 
   def create
-    @post_comment = @post.post_comments.build(post_comment_params)
+    @post_comment = @post.comments.build(post_comment_params)
     @post_comment.user = current_user
 
     if @post_comment.save
