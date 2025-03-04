@@ -13,7 +13,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     @user = User.create(user_attrs)
 
     @com_attrs = {
-      body: 'test body com',
+      content: 'test body com',
       ancestry: '/'
     }
   end

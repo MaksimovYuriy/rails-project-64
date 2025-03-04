@@ -1,11 +1,11 @@
 one:
-  body: first test comment
+  content: first test comment
   user: one
   post: two
   ancestry: /
 
 nested_one:
-  body: second test comment
+  content: second test comment
   user: two
   post: one
   ancestry: /<%= ActiveRecord::FixtureSet.identify(:one) %>/

@@ -6,5 +6,5 @@ class PostComment < ApplicationRecord
 
   has_ancestry
 
-  validates :body, presence: true
+  validates :content, presence: true
 end
