@@ -1,12 +1,13 @@
 linters:
-  Rails/OutputSafety:
-    Enabled: false
   LineLength:
     enabled: false
   AccessibleAlt:
     enabled: true
   NoEmptyElements:
     enabled: false
+  ExcludedFiles:
+    'app/views/layouts/application.html.slim':
+      lines: [18]
 
 include_linters:
   - Linter::LineLength
