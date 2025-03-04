@@ -3,8 +3,8 @@ setup:
 	yarn install
 	yarn build
 	yarn build:css
-	rails db:migrate
-	rails db:seed
+	bin/rails db:migrate
+	bin/rails db:seed
 
 lint:
 	rake lint:all
