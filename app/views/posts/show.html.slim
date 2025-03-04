@@ -15,7 +15,7 @@ container.text-break
 container.d-flex.align-items-center.mt-5
     strong
         | Author:
-        = @post.user.email
+        = @post.creator.email
     strong.ms-3
         = time_ago_in_words(@post.created_at).to_s
     strong.ms-5

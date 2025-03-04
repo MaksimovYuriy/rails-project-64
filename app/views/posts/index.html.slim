@@ -11,7 +11,7 @@
           = post.body
         container.d-flex.align-items-center
           h6.card-subtitle.m-2
-            = "Author: #{post.user.email}"
+            = "Author: #{post.creator.email}"
           h6.card-subtitle.m-2.ms-2
             = "Likes: #{PostLike.where(post: post).count}"
           h6.card-subtitle.m-2.ms-3

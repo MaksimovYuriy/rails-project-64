@@ -4,12 +4,12 @@ one:
   title: 'test_title_1'
   body: 'test_body_1'
   category: one
-  user: one
+  creator: one
 
 two:
   title: 'test_title_2'
   body: 'test_body_2'
   category: two
-  user: two
+  creator: two
 
 
