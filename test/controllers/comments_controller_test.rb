@@ -24,13 +24,13 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       password: @user.password
     } }
 
-    post post_post_comments_url(posts(:one)), params: { post_comment: @com_attrs }
+    post post_comments_url(posts(:one)), params: { post_comment: @com_attrs }
     comment = PostComment.find_by @com_attrs
     assert { comment }
   end
 
   test 'create comment without user' do
-    post post_post_comments_url(posts(:one)), params: { post_comment: @com_attrs }
+    post post_comments_url(posts(:one)), params: { post_comment: @com_attrs }
     PostComment.find_by @com_attrs
     assert_redirected_to new_user_session_url
   end

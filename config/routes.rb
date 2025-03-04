@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :posts do
-    resources :post_comments, shallow: true, controller: 'comments', only: [:create]
-    resources :post_likes, controller: 'likes', only: %i[create destroy]
+    resources :post_comments, controller: 'comments', only: [:create], as: :comments
+    resources :post_likes, controller: 'likes', only: %i[create destroy], as: :likes
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

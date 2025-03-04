@@ -14,7 +14,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'like without user' do
-    post post_post_likes_path(posts(:one))
+    post post_likes_path(posts(:one))
     assert_redirected_to new_user_session_url
   end
 
@@ -24,7 +24,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
       password: @user.password
     } }
 
-    post post_post_likes_url(posts(:one))
+    post post_likes_url(posts(:one))
     assert_redirected_to post_path(posts(:one))
 
     post_like = PostLike.find_by user: @user, post: posts(:one)
@@ -32,7 +32,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'delete like without user' do
-    delete post_post_like_path(posts(:one), users(:one))
+    delete post_like_path(posts(:one), users(:one))
     assert_redirected_to new_user_session_url
   end
 
@@ -42,11 +42,11 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
       password: @user.password
     } }
 
-    post post_post_likes_url(posts(:one))
+    post post_likes_url(posts(:one))
     post_like = PostLike.find_by user: @user, post: posts(:one)
     assert { post_like }
 
-    delete post_post_like_path(posts(:one), @user)
+    delete post_like_path(posts(:one), @user)
     post_like = PostLike.find_by user: @user, post: posts(:one)
     assert { post_like.nil? }
   end
