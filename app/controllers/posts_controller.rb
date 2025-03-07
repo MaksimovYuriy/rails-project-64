@@ -20,10 +20,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.creator = current_user
     if @post.save
-      flash[:success] = 'The post was created successfully!'
+      flash[:success] = I18n.t('post.created')
       redirect_to post_path(@post)
     else
-      flash[:warning] = 'Fill in all the fields!'
+      flash[:warning] = I18n.t('post.create_error')
       render :new, status: :unprocessable_entity
     end
   end

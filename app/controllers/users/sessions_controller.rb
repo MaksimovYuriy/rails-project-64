@@ -10,20 +10,22 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super
-    flash.clear
-    if current_user && current_user.active_for_authentication?
-      flash[:success] = 'Signed in successfully.'
-    else
-      flash[:warning] = 'Email or password is incorrect.'
+    resource = warden.authenticate(auth_options)
+    if resource.nil?
+      flash[:warning] = I18n.t('devise.sessions.sign_in_error')
     end
+
+    super
+
+    flash.clear
+    flash[:success] = I18n.t('devise.sessions.signed_in')
   end
 
   # DELETE /resource/sign_out
   def destroy
-    super do |resource|
+    super do |_resource|
       flash.clear
-      flash[:success] = 'Signed out successfully.'
+      flash[:success] = I18n.t('devise.sessions.signed_out')
     end
   end
 

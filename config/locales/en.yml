@@ -29,3 +29,12 @@
 
 en:
   hello: "Hello world"
+  comment:
+    created: 'A comment has been created!'
+    empty: 'A comment cannot be empty.'
+  post:
+    like: 'You liked this post!'
+    like_error: 'Hmmm.... Some error with likes...'
+    created: 'The post was created successfully!'
+    created_error: 'Fill in all the fields!'
+

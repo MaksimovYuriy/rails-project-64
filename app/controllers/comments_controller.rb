@@ -9,12 +9,11 @@ class CommentsController < ApplicationController
     @post_comment.user = current_user
 
     if @post_comment.save
-      flash[:success] = 'A comment has been created!'
-      redirect_to post_path(@post)
+      flash[:success] = I18n.t('comment.created')
     else
-      flash[:warning] = 'A comment cannot be empty.'
-      redirect_to post_path(@post)
+      flash[:warning] = I18n.t('comment.empty')
     end
+    redirect_to post_path(@post)
   end
 
   private

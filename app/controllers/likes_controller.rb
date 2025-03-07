@@ -7,10 +7,10 @@ class LikesController < ApplicationController
   def create
     @post_like = PostLike.new(user: current_user, post: @post)
     if @post_like.save
-      flash[:success] = 'You liked this post!'
+      flash[:success] = I18n.t('post.like')
       redirect_to post_path(@post)
     else
-      flash[:notice] = 'Hmmm.... Some error with likes...'
+      flash[:warning] = I18n.t('post.like_error')
       redirect_to root_path
     end
   end

@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  after_action :remove_notice, only: %i[create]
 
   # GET /resource/sign_up
   # def new
@@ -10,9 +11,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      if resource.errors.any?
+        flash[:warning] = I18n.t('devise.registrations.sign_up_error')
+      else
+        flash.clear
+        flash[:success] = I18n.t('devise.registrations.signed_up')
+      end
+    end
+  end
+
+  private
+
+  def remove_notice
+    flash.discard(:notice)
+  end
 
   # GET /resource/edit
   # def edit

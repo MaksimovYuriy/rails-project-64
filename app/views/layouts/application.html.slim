@@ -24,7 +24,7 @@ html
 
       .container
         - flash.each do |type, message|
-          - if type == 'notice' || type == 'success' || type == 'warning'
+          - if %w[notice success warning].include(type)
             div class="alert alert-#{type}"
               = message
 
