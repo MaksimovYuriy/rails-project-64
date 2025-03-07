@@ -22,6 +22,12 @@ html
       div
         = render partial: 'layouts/shared/nav'
 
+      .container
+        - flash.each do |type, message|
+          - if type == 'notice' || type == 'success' || type == 'warning'
+            div class="alert alert-#{type}"
+              = message
+
       .container.mb-5
         = yield
 

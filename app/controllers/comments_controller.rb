@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
     @post_comment.user = current_user
 
     if @post_comment.save
-
+      flash[:success] = 'A comment has been created!'
       redirect_to post_path(@post)
     else
-      redirect_to new_user_session_path
+      flash[:warning] = 'A comment cannot be empty.'
+      redirect_to post_path(@post)
     end
   end
 

@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :comments, class_name: 'PostComment', dependent: :destroy
   has_many :likes, class_name: 'PostLike', dependent: :destroy
 
+  validates :category_id, presence: true
   validates :title, presence: true
   validates :title, length: { minimum: 5, maximum: 200 }
   validates :body, presence: true
