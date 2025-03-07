@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :users
   resources :posts do
     resources :post_comments, controller: 'comments', only: [:create], as: :comments
