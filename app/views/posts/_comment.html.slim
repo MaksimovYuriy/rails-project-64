@@ -16,8 +16,7 @@
                         data-bs-target="#reply_form_#{comment.id}")
                         = t('h.reply')
                     .collapse.mt-2 id="reply_form_#{comment.id}"
-                        - reply_comment = PostComment.new
-                        - reply_comment.parent_id = comment.id
+                        - reply_comment = PostComment.new(parent_id = comment.id)
                         == render 'posts/new_comment', post_comment: reply_comment, url: post_comments_path(@post)
             - if comment.children.any?
                 div style="margin-left: #{depth}px;"
