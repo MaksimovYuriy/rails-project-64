@@ -1,6 +1,6 @@
 container.d-flex.align-items-center
     p
-        = link_to 'All Posts', posts_path
+        = link_to t('navbar.all_posts'), posts_path
     p
         = ' / '
     p
@@ -21,7 +21,6 @@ container.d-flex.align-items-center.mt-5
     strong.ms-5
         = PostLike.where(post: @post).count
     strong
-        - @post_like = PostLike.find_by(user: current_user, post: @post)
         - if @post_like
             = button_to (image_tag asset_path('like_1.png'), width: 25), post_like_path(@post, @post_like),
             method: :delete, class: 'btn btn-link'

@@ -37,4 +37,17 @@ en:
     like_error: 'Hmmm.... Some error with likes...'
     created: 'The post was created successfully!'
     create_error: 'Fill in all the fields!'
+  navbar:
+    home: 'Home'
+    new_post: 'New post'
+    sign_in: 'Sign in'
+    sign_up: 'Sign up'
+    sign_out: 'Sign out'
+    all_posts: 'All posts'
+  h:
+    reply: 'Reply'
+  title:
+    posts: 'Posts'
+    new_post: 'New post'
+
 

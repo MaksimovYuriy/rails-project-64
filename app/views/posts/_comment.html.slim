@@ -14,7 +14,7 @@
                         type='button'
                         data-bs-toggle='collapse'
                         data-bs-target="#reply_form_#{comment.id}")
-                        | Reply
+                        = t('h.reply')
                     .collapse.mt-2 id="reply_form_#{comment.id}"
                         - reply_comment = PostComment.new
                         - reply_comment.parent_id = comment.id
