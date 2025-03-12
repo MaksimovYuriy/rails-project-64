@@ -5,10 +5,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  resources :users
-  resources :posts do
-    resources :post_comments, controller: 'comments', only: [:create], as: :comments
-    resources :post_likes, controller: 'likes', only: %i[create destroy], as: :likes
+  resources :posts, only: [:index, :show, :new, :create] do
+    resources :comments, only: [:create]
+    resources :likes, only: %i[create destroy]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
