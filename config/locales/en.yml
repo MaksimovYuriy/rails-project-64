@@ -36,5 +36,5 @@ en:
     like: 'You liked this post!'
     like_error: 'Hmmm.... Some error with likes...'
     created: 'The post was created successfully!'
-    created_error: 'Fill in all the fields!'
+    create_error: 'Fill in all the fields!'
 
