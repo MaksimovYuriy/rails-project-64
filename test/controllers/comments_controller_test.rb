@@ -34,4 +34,20 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     PostComment.find_by @com_attrs
     assert_redirected_to new_user_session_url
   end
+
+  test 'create reply-comment' do
+    post user_session_url, params: { user: {
+      email: @user.email,
+      password: @user.password
+    } }
+
+    reply_comment_params = {
+      parent_id: post_comments(:one).id,
+      content: 'nested'
+    }
+    post post_comments_url(posts(:one)), params: { post_comment: reply_comment_params }
+    comment = PostComment.last
+    assert { comment }
+    assert { comment.ancestry == "/#{post_comments(:one).id}/" }
+  end
 end

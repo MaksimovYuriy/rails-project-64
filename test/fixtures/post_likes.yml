@@ -6,3 +6,7 @@ two:
   post: two
   user: two
 
+three:
+  post: one
+  user: two
+

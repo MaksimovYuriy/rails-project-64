@@ -9,3 +9,15 @@ nested_one:
   user: two
   post: one
   ancestry: /<%= ActiveRecord::FixtureSet.identify(:one) %>/
+
+nested_two:
+  content: third test comment
+  user: one
+  post: one
+  ancestry: /<%= ActiveRecord::FixtureSet.identify(:one) %>/
+
+nested_2:
+  content: nested comment in nested comment
+  user: two
+  post: one
+  ancestry: /<%= [ActiveRecord::FixtureSet.identify(:one), ActiveRecord::FixtureSet.identify(:nested_one)].join('/') %>/
