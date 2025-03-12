@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  resources :posts, only: [:index, :show, :new, :create] do
+  resources :posts, only: %i[index show new create] do
     resources :comments, only: [:create]
     resources :likes, only: %i[create destroy]
   end
