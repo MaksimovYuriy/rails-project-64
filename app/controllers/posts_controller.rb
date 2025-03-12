@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_like = PostLike.find_by(user: current_user, post: @post)
+    @nested_comments = @post.comments.includes(:user).arrange(order: :created_at)
   end
 
   def new

@@ -32,4 +32,4 @@ h3.mt-5
 div
     == render 'posts/new_comment', post_comment: @post_comment, url: post_comments_path(@post)
 
-== render 'posts/comment', post_comments: @post.comments.where(ancestry: '/').order(created_at: :desc), depth: 0
+== render 'posts/comment', post_comments: @nested_comments, depth: 0
