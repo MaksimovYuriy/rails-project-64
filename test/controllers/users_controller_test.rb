@@ -18,7 +18,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test '#create user session' do
     user = users(:one)
-    
+
     post user_session_url, params: { user: {
       email: user.email,
       password: 'password'

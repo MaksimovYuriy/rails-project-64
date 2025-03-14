@@ -3,7 +3,6 @@
 require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
-
   test 'like without user' do
     post post_likes_path(posts(:one))
     assert_redirected_to new_user_session_url

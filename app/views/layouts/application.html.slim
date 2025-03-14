@@ -1,4 +1,6 @@
-- types = %w[notice success warning]
+- types = { success: 'success', notice: 'success',
+            alert: 'danger', error: 'danger',
+            warning: 'warning', info: 'info' }
 
 doctype html
 html
@@ -26,9 +28,10 @@ html
 
       .container
         - flash.each do |type, message|
-          - if types.include?(type)
-            div class="alert alert-#{type}"
-              = message
+          - bootstrap_class = types[type.to_sym] || 'secondary'
+          div class="alert alert-#{bootstrap_class} alert-dismissible fade show" role="alert"
+            = message
+            button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
 
       .container.mb-5
         = yield
