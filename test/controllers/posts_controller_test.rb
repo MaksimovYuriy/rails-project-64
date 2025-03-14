@@ -9,43 +9,44 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       body: 'test_body',
       category_id: categories(:one)[:id]
     }
-
-    user_attrs = {
-      email: 'test_email@mail.ru',
-      password: 'testtest',
-      password_confirmation: 'testtest'
-    }
-
-    @user = User.create(user_attrs)
   end
 
-  test 'new post without user' do
+  test 'index page' do
+    get posts_url
+    assert_response :success
+  end
+
+  test 'show page' do
+    get post_url(posts(:one))
+    assert_response :success
+  end
+
+  test 'new post page with user' do
+    sign_in users(:one)
     get new_post_url
-    assert_response :redirect
+    assert_response :success
+  end
+
+  test 'new post page without user' do
+    get new_post_url
     assert_redirected_to new_user_session_url
   end
 
   test 'new post with user' do
-    post user_session_url, params: { user: {
-      email: @user.email,
-      password: @user.password
-    } }
+    sign_in users(:one)
 
     post posts_url, params: { post: @post_attrs }
-    post = Post.find_by @post_attrs
+    post = Post.find_by @post_attrs.merge(creator_id: users(:one).id)
     assert { post }
     assert_redirected_to post_url(post)
   end
 
   test 'new post without category' do
-    post user_session_url, params: { user: {
-      email: @user.email,
-      password: @user.password
-    } }
+    sign_in users(:one)
 
     params_without_category = {
-      title: 'test_title',
-      body: 'test_body'
+      title: @post_attrs[:title],
+      body: @post_attrs[:body]
     }
 
     post posts_url, params: { post: params_without_category }
@@ -54,13 +55,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'new post without title' do
-    post user_session_url, params: { user: {
-      email: @user.email,
-      password: @user.password
-    } }
+    sign_in users(:one)
 
     params_without_title = {
-      body: 'test_body',
+      body: @post_attrs[:body],
       category_id: categories(:one)[:id]
     }
 
@@ -70,13 +68,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'new post without body' do
-    post user_session_url, params: { user: {
-      email: @user.email,
-      password: @user.password
-    } }
+    sign_in users(:one)
 
     params_without_body = {
-      title: 'test_title',
+      title: @post_attrs[:title],
       category_id: categories(:one)[:id]
     }
 
