@@ -46,8 +46,13 @@ en:
     all_posts: 'All posts'
   h:
     reply: 'Reply'
+    author: 'Author'
+    comments: 'Comments'
+    likes: 'Likes'
+    date: 'Date'
   title:
     posts: 'Posts'
     new_post: 'New post'
+  github: github.com/MaksimovYuriy
 
 

@@ -11,8 +11,8 @@
           = post.body
         container.d-flex.align-items-center
           h6.card-subtitle.m-2
-            = "Author: #{post.creator.email}"
+            = "#{t('h.author')}: #{post.creator.email}"
           h6.card-subtitle.m-2.ms-2
-            = "Likes: #{post.likes_count}"
+            = "#{t('h.likes')}: #{post.likes_count}"
           h6.card-subtitle.m-2.ms-3
-            = "Date: #{time_ago_in_words(post.created_at)}"
+            = "#{t('h.date')}: #{time_ago_in_words(post.created_at)}"
