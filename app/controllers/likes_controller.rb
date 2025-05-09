@@ -29,5 +29,6 @@ class LikesController < ApplicationController
 
   def set_post
     Post.find(params[:post_id])
+    
   end
 end
